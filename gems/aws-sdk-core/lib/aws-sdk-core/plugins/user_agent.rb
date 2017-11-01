@@ -30,6 +30,9 @@ module Aws
 
           ua += " #{context.config.user_agent_suffix}" if context.config.user_agent_suffix
 
+          env_ua_suffix = ENV['HTTP_USER_AGENT_SUFFIX']
+          ua += " #{env_ua_suffix}" if env_ua_suffix
+
           context.http_request.headers['User-Agent'] = ua.strip
         end
 
